@@ -1,0 +1,28 @@
+﻿<Page
+    x:Class="Harjoitustyö.Game"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Harjoitustyö"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="720"
+    d:DesignWidth="1280">
+
+    <Grid>
+        <Canvas 
+           
+            x:Name="Track"
+                Width="1280"
+                Height="720"
+                HorizontalAlignment="Center"
+               
+          
+                >
+         
+        </Canvas>
+        <Button x:Name="button" Content="Button" Canvas.Left="678" Canvas.Top="27" Click="button_Click_1" Margin="803,1,0,687"/>
+
+
+    </Grid>
+</Page>
