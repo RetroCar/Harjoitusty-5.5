@@ -27,13 +27,13 @@ namespace Harjoitustyö
         public double LocationX { get; set; }
         public double LocationY { get; set; }
         //Speed values
-        = 15.0;
-        private readonly double MaxSpeed = 15.0;
+      
+        public double MaxSpeed { get; set; }
         private readonly double MaxSpeed1 = 7.5;
         private readonly double Accelarate = 3.0;
         private readonly double Break = 1.5;
 
-        private double speed;
+        public double speed;
         private double speed1;
 
         // Cars angle
@@ -42,7 +42,7 @@ namespace Harjoitustyö
         public Car1()
         {
             this.InitializeComponent();
-
+            MaxSpeed = 15;
             //starts the animation ?
             timer = new DispatcherTimer();
             timer.Tick += Timer_Car;
@@ -76,6 +76,8 @@ namespace Harjoitustyö
             }
 
         }
+
+       
 
         //forward movement
         public void Drive()

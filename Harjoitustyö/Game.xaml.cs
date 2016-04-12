@@ -29,11 +29,16 @@ namespace Harjoitustyö
         private Asfalt asfalt;
         private Sand sand;
        
-
+        // Canvas Width and Height 
         private double CanvasWidth;
         private double CanvasHeight;
         private double CanvasWidthMap;
         private double CanvasHeightMap;
+
+
+        public double speed;
+        public double Maxspeed = 7.5;
+        
 
 
         // Controls
@@ -94,9 +99,34 @@ namespace Harjoitustyö
             if (Left) car1.Rotate(-3);
             if (Right) car1.Rotate(3);
 
+            SandCollision();
+
 
             car1.Updateposition();
         }
+
+
+        public void SandCollision()
+        {
+            //get rect from sand
+
+            Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
+            Rect obstacle = new Rect(sand.LocationX, sand.LocationY, sand.ActualWidth, sand.ActualHeight);
+
+            car.Intersect(obstacle);
+
+            if (!car.IsEmpty) 
+            {
+                car1.MaxSpeed = 5;
+            }
+            else
+            {
+                car1.MaxSpeed = 15;
+            }
+        }
+
+
+
 
         // see if the controls are not pressed
         private void CoreWindow_KeyUp(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)

@@ -10,35 +10,10 @@
     d:DesignWidth="400">
 
     <Grid>
-        <Rectangle Width="1010" Height="480" Margin="128,126,-738,-306" VerticalAlignment="Top">
-            <Rectangle.Fill>
-                <ImageBrush
-                    
-                    ImageSource="Assets/Sand.png"
-                    Stretch="Fill"
-                    AlignmentX="Left"
-                    AlignmentY="Top">
-
-                    <ImageBrush.Transform>
-                        <TranslateTransform x:Name="Sheet"/>
-
-                    </ImageBrush.Transform>
-
-                </ImageBrush>
-
-            </Rectangle.Fill>
-
-            <Rectangle.RenderTransform>
-                <RotateTransform x:Name="Map_Angle" 
-                                 Angle="0"
-                                 CenterX="600"
-                                 CenterY="400"/>
 
 
-            </Rectangle.RenderTransform>
+        <Image Source="Assets/Sand.png" Width="1005" Height="480" Margin="128,126,-738,-306" Stretch="Fill"/>
 
 
-
-        </Rectangle>
     </Grid>
 </UserControl>

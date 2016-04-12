@@ -23,6 +23,15 @@ namespace Harjoitustyö
         public Sand()
         {
             this.InitializeComponent();
+
+           
+
+        }
+
+        public void UpdatePosition()
+        {
+            SetValue(Canvas.LeftProperty, LocationX);
+            SetValue(Canvas.TopProperty, LocationY);
         }
     }
 }
