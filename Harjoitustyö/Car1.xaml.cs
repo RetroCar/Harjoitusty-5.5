@@ -27,10 +27,38 @@ namespace Harjoitustyö
         public double LocationX { get; set; }
         public double LocationY { get; set; }
         //Speed values
-      
-        public double MaxSpeed { get; set; }
+
+        
+        
+        
+
+        public void Slow()
+        
+        {
+           
+            speed = speed - 0.5;
+                if (speed <= 0) speed = 0;
+                    LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90)))*speed;
+                    LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90)))*speed;
+
+            speed1 = speed1 - 0.5;
+                if (speed1 <= 0) speed1 = 0;
+                    LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
+                    LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
+
+        }
+
+
+
+
+
+
+
+
+        private readonly double MaxSpeed = 15.0;
         private readonly double MaxSpeed1 = 7.5;
-        private readonly double Accelarate = 3.0;
+        private readonly double Accelarate = 2.0;
+       // public double Break { get; set; }
         private readonly double Break = 1.5;
 
         public double speed;
@@ -82,10 +110,13 @@ namespace Harjoitustyö
         //forward movement
         public void Drive()
         {
+           
             speed += Accelarate;
             if (speed > MaxSpeed) speed = MaxSpeed;
             LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed;
             LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed;
+
+           
 
         }
 
