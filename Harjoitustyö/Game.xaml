@@ -21,7 +21,7 @@
                 >
          
         </Canvas>
-        <Button x:Name="button" Content="Button" Canvas.Left="678" Canvas.Top="27" Click="button_Click_1" Margin="803,1,0,687"/>
+        <Button x:Name="button" Content="Mainmenu" Canvas.Left="678" Canvas.Top="27" Click="button_Click_1" Margin="803,1,0,687"/>
 
 
     </Grid>

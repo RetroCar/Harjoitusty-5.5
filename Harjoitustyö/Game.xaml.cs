@@ -93,6 +93,7 @@ namespace Harjoitustyö
             //spinning
             if (Left) car1.Rotate(-3);
             if (Right) car1.Rotate(3);
+            car1.Slow();
 
 
             car1.Updateposition();
