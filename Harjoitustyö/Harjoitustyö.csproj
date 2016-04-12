@@ -104,6 +104,9 @@
     <Compile Include="Car1.xaml.cs">
       <DependentUpon>Car1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Creators.xaml.cs">
+      <DependentUpon>Creators.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Game.xaml.cs">
       <DependentUpon>Game.xaml</DependentUpon>
     </Compile>
@@ -122,8 +125,11 @@
     <None Include="Harjoitustyö_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Artists.png" />
     <Content Include="Assets\Asfalt.png" />
     <Content Include="Assets\Car_nro_1.png" />
+    <Content Include="Assets\HighScores.png" />
+    <Content Include="Assets\MainPage.png" />
     <Content Include="Assets\Sand.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -144,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Car1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Creators.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
