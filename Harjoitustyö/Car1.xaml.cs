@@ -35,16 +35,17 @@ namespace Harjoitustyö
         public void Slow()
         
         {
-           
+           //front slowing
             speed = speed - 0.5;
                 if (speed <= 0) speed = 0;
                     LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90)))*speed;
                     LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90)))*speed;
-
+            //backward slowing
             speed1 = speed1 - 0.5;
-                if (speed1 <= 0) speed1 = 0;
-                    LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
-                    LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
+            if (speed1 <= 0) speed1 = 0;
+            LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
+            LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
+
 
         }
 
@@ -102,7 +103,11 @@ namespace Harjoitustyö
                 Angle += direction * AngleTier;
                 Car_1_Angle.Angle = Angle;
             }
-
+            if (speed1 > 1)
+            {
+                Angle += direction * AngleTier;
+                Car_1_Angle.Angle = Angle;
+            }
         }
 
         //forward movement

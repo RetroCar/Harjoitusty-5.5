@@ -61,10 +61,10 @@ namespace Harjoitustyö
             CanvasHeightMap = Track.Height;
 
             //add map
-            asfalt = new Asfalt { LocationX = CanvasHeightMap, LocationY = CanvasHeightMap };
+            asfalt = new Asfalt { LocationX = CanvasWidthMap, LocationY = CanvasHeightMap };
             Track.Children.Add(asfalt);
 
-            sand = new Sand { LocationX = CanvasHeightMap, LocationY = CanvasHeightMap };
+            sand = new Sand { LocationX = CanvasWidthMap, LocationY = CanvasHeightMap };
             Track.Children.Add(sand);
 
             //add first car

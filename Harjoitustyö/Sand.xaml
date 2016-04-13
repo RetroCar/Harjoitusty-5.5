@@ -6,11 +6,11 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignHeight="480"
+    d:DesignWidth="1010">
 
-    <Grid>
-        <Rectangle Width="1010" Height="480" Margin="128,126,-738,-306" VerticalAlignment="Top">
+    <Grid Margin="0,0,-732,-303" HorizontalAlignment="Left" Width="1132">
+        <Rectangle Width="1010" Height="480" Margin="119,280,3,0" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <ImageBrush
                     
