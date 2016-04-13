@@ -10,17 +10,15 @@
     d:DesignWidth="1280">
 
     <Grid>
-        <Canvas 
-           
+        <Canvas
             x:Name="Track"
                 Width="1280"
                 Height="720"
-                HorizontalAlignment="Center"
-               
-          
-                >
-         
-        </Canvas>
+                HorizontalAlignment="Center"/>
+
+
+
+
         <Button x:Name="button" Content="Mainmenu" Canvas.Left="678" Canvas.Top="27" Click="button_Click_1" Margin="803,1,0,687"/>
 
 

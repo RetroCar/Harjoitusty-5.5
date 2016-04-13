@@ -31,10 +31,10 @@ namespace Harjoitustyö
         private Sand sand;
        
         // Canvas Width and Height 
-        private double CanvasWidth;
-        private double CanvasHeight;
-        private double CanvasWidthMap;
-        private double CanvasHeightMap;
+        public double CanvasWidth;
+        public double CanvasHeight;
+        public double CanvasWidthMap;
+        public double CanvasHeightMap;
 
 
         public double speed;
@@ -128,6 +128,10 @@ namespace Harjoitustyö
                 car1.MaxSpeed1 = 5;
             }
         }
+
+
+      
+
 
 
 

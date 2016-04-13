@@ -40,9 +40,19 @@ namespace Harjoitustyö
         // Cars angle
         private double Angle = 0;
         private readonly double AngleTier = 5;
+
+        public double CanvasWidth;
+        public double CanvasHeight;
+        public double CanvasWidthMap;
+        public double CanvasHeightMap;
+
+
         public Car1()
         {
             this.InitializeComponent();
+
+
+           
             //maxspeed value
             MaxSpeed = 10;
             MaxSpeed1 = 5;
@@ -95,9 +105,7 @@ namespace Harjoitustyö
             if (speed > MaxSpeed) speed = MaxSpeed;
             LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed;
             LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed;
-
-           
-
+       
         }
 
 
@@ -109,6 +117,8 @@ namespace Harjoitustyö
             if (speed1 > MaxSpeed1) speed1 = MaxSpeed1;
             LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
             LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
+
+
 
         }
             // car slow downs when you don't push buttons
@@ -127,12 +137,8 @@ namespace Harjoitustyö
             LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
         }
 
-
-
+      
 
     }
-
-
-
 
 }
