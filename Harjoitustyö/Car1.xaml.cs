@@ -26,42 +26,16 @@ namespace Harjoitustyö
         //location
         public double LocationX { get; set; }
         public double LocationY { get; set; }
-        //Speed values
-
-        
-        
-      
-        public void Slow()
-        
-        {
-           
-            speed = speed - 0.5;
-                if (speed <= 0) speed = 0;
-                    LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90)))*speed;
-                    LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90)))*speed;
-
-            speed1 = speed1 - 0.5;
-                if (speed1 <= 0) speed1 = 0;
-                    LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
-                    LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
-
-        }
-
-
-
-
-
-
-
+        //Speed values             
 
         public double MaxSpeed { get; set; }
-        private readonly double MaxSpeed1 = 7.5;
+        public double MaxSpeed1 { get; set; }
         private readonly double Accelarate = 2.0;
        // public double Break { get; set; }
         private readonly double Break = 1.5;
 
         public double speed;
-        private double speed1;
+        public double speed1;
        
         // Cars angle
         private double Angle = 0;
@@ -69,7 +43,9 @@ namespace Harjoitustyö
         public Car1()
         {
             this.InitializeComponent();
-            MaxSpeed = 15;
+            //maxspeed value
+            MaxSpeed = 10;
+            MaxSpeed1 = 5;
             //starts the animation ?
             timer = new DispatcherTimer();
             timer.Tick += Timer_Car;
@@ -135,5 +111,28 @@ namespace Harjoitustyö
             LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
 
         }
+            // car slow downs when you don't push buttons
+        public void Slow()
+
+        {
+
+            speed = speed - 0.5;
+            if (speed <= 0) speed = 0;
+            LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed;
+            LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed;
+
+            speed1 = speed1 - 0.5;
+            if (speed1 <= 0) speed1 = 0;
+            LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
+            LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
+        }
+
+
+
+
     }
+
+
+
+
 }

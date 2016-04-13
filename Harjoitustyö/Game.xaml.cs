@@ -120,10 +120,12 @@ namespace Harjoitustyö
             if (!car.IsEmpty) 
             {
                 car1.MaxSpeed = 2;
+                car1.MaxSpeed1 = 1.5;
             }
             else
             {
                 car1.MaxSpeed = 10;
+                car1.MaxSpeed1 = 5;
             }
         }
 
