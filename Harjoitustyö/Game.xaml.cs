@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.System;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -28,7 +30,7 @@ namespace Harjoitustyö
         //enviroment
         private Asfalt asfalt;
         private Sand sand;
-       
+
 
         private double CanvasWidth;
         private double CanvasHeight;
@@ -42,6 +44,8 @@ namespace Harjoitustyö
         private bool Right;
         private bool Down;
 
+        private Stopwatch stopwatch;
+        private MediaElement racemusa;
         // game timer
         private DispatcherTimer game;
         public Game()
@@ -54,6 +58,8 @@ namespace Harjoitustyö
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
 
             //get my own canvas size
+
+            stopwatch = new Stopwatch();
 
             CanvasWidth = Track.Width;
             CanvasHeight = Track.Height;
@@ -78,12 +84,36 @@ namespace Harjoitustyö
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
 
+
             // Game fps
             game = new DispatcherTimer();
             game.Tick += Game_Timer;
             game.Interval = new TimeSpan(0, 0, 0, 0, 600 / 70);
             game.Start();
+            
+
+            stopwatch.Start();
+            InitAudio();
+           
         }
+
+
+            
+
+    
+        private async void InitAudio()
+        {
+            racemusa = new MediaElement();
+            StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
+            StorageFile file = await folder.GetFileAsync("Race.mp3");
+            var stream = await file.OpenAsync(FileAccessMode.Read);
+            racemusa.AutoPlay = true;
+            racemusa.SetSource(stream, file.ContentType);
+            
+
+        }
+      
+        
                private void Game_Timer(object sender, object e)
         {
             //move
@@ -95,6 +125,7 @@ namespace Harjoitustyö
             if (Right) car1.Rotate(3);
             car1.Slow();
 
+            timerLog.Text = stopwatch.ElapsedMilliseconds.ToString();
 
             car1.Updateposition();
         }
@@ -151,8 +182,9 @@ namespace Harjoitustyö
             }
         }
 
-              private void button_Click(object sender, RoutedEventArgs e)
+        private void button_Click(object sender, RoutedEventArgs e)
         {
+           
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame == null) return;
 
@@ -172,6 +204,11 @@ namespace Harjoitustyö
                 rootFrame.GoBack();
             }
         }
-    }
-    }
+
+        private void timerLog_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+    } }
+   
 

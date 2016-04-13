@@ -29,6 +29,7 @@ namespace Harjoitustyö
 
         private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
+            
             //Add navigate to game
             this.Frame.Navigate(typeof(Game));
         }

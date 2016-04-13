@@ -131,6 +131,7 @@
     <Content Include="Assets\Car_nro_1.png" />
     <Content Include="Assets\HighScores.png" />
     <Content Include="Assets\MainPage.png" />
+    <Content Include="Assets\Race.mp3" />
     <Content Include="Assets\Sand.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
