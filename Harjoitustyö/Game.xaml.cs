@@ -6,7 +6,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Storage;
 using Windows.System;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -30,12 +29,17 @@ namespace Harjoitustyö
         //enviroment
         private Asfalt asfalt;
         private Sand sand;
+       
+        // Canvas Width and Height 
+        public double CanvasWidth;
+        public double CanvasHeight;
+        public double CanvasWidthMap;
+        public double CanvasHeightMap;
 
 
-        private double CanvasWidth;
-        private double CanvasHeight;
-        private double CanvasWidthMap;
-        private double CanvasHeightMap;
+        public double speed;
+        public double Maxspeed = 7.5;
+        
 
 
         // Controls
@@ -44,8 +48,6 @@ namespace Harjoitustyö
         private bool Right;
         private bool Down;
 
-        private Stopwatch stopwatch;
-        private MediaElement racemusa;
         // game timer
         private DispatcherTimer game;
         public Game()
@@ -58,8 +60,6 @@ namespace Harjoitustyö
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
 
             //get my own canvas size
-
-            stopwatch = new Stopwatch();
 
             CanvasWidth = Track.Width;
             CanvasHeight = Track.Height;
@@ -84,36 +84,12 @@ namespace Harjoitustyö
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
 
-
             // Game fps
             game = new DispatcherTimer();
             game.Tick += Game_Timer;
             game.Interval = new TimeSpan(0, 0, 0, 0, 600 / 70);
             game.Start();
-            
-
-            stopwatch.Start();
-            InitAudio();
-           
         }
-
-
-            
-
-    
-        private async void InitAudio()
-        {
-            racemusa = new MediaElement();
-            StorageFolder folder = await Windows.ApplicationModel.Package.Current.InstalledLocation.GetFolderAsync("Assets");
-            StorageFile file = await folder.GetFileAsync("Race.mp3");
-            var stream = await file.OpenAsync(FileAccessMode.Read);
-            racemusa.AutoPlay = true;
-            racemusa.SetSource(stream, file.ContentType);
-            
-
-        }
-      
-        
                private void Game_Timer(object sender, object e)
         {
             //move
@@ -125,10 +101,40 @@ namespace Harjoitustyö
             if (Right) car1.Rotate(3);
             car1.Slow();
 
-            timerLog.Text = stopwatch.ElapsedMilliseconds.ToString();
+            SandCollision();
+
 
             car1.Updateposition();
         }
+
+
+        public void SandCollision()
+        {
+            //get rect from sand
+
+            Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
+            Rect obstacle = new Rect(128,135,976,466);
+            Debug.WriteLine(obstacle);
+            car.Intersect(obstacle);
+
+            if (!car.IsEmpty) 
+            {
+                car1.MaxSpeed = 2;
+                car1.MaxSpeed1 = 1.5;
+            }
+            else
+            {
+                car1.MaxSpeed = 10;
+                car1.MaxSpeed1 = 5;
+            }
+        }
+
+
+      
+
+
+
+
 
         // see if the controls are not pressed
         private void CoreWindow_KeyUp(Windows.UI.Core.CoreWindow sender, Windows.UI.Core.KeyEventArgs args)
@@ -182,9 +188,8 @@ namespace Harjoitustyö
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+              private void button_Click(object sender, RoutedEventArgs e)
         {
-           
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame == null) return;
 
@@ -204,11 +209,6 @@ namespace Harjoitustyö
                 rootFrame.GoBack();
             }
         }
-
-        private void timerLog_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-    } }
-   
+    }
+    }
 

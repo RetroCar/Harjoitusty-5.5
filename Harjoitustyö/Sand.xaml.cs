@@ -23,6 +23,13 @@ namespace Harjoitustyö
         public Sand()
         {
             this.InitializeComponent();
+
+          
+                  
+
         }
+
+
+       
     }
 }

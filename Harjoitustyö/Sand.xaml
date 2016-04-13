@@ -6,39 +6,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="480"
-    d:DesignWidth="1010">
+    d:DesignHeight="200"
+    d:DesignWidth="300">
 
-    <Grid Margin="0,0,-732,-303" HorizontalAlignment="Left" Width="1132">
-        <Rectangle Width="1010" Height="480" Margin="119,280,3,0" VerticalAlignment="Top">
-            <Rectangle.Fill>
-                <ImageBrush
-                    
-                    ImageSource="Assets/Sand.png"
-                    Stretch="Fill"
-                    AlignmentX="Left"
-                    AlignmentY="Top">
-
-                    <ImageBrush.Transform>
-                        <TranslateTransform x:Name="Sheet"/>
-
-                    </ImageBrush.Transform>
-
-                </ImageBrush>
-
-            </Rectangle.Fill>
-
-            <Rectangle.RenderTransform>
-                <RotateTransform x:Name="Map_Angle" 
-                                 Angle="0"
-                                 CenterX="600"
-                                 CenterY="400"/>
-
-
-            </Rectangle.RenderTransform>
+    <Grid >
 
 
 
-        </Rectangle>
+
+        <Image Source="Assets/Sand.png" Width="1008" Height="480" Margin="128,126,-838,-406" Stretch="Fill"/>
+
+
     </Grid>
 </UserControl>

@@ -26,52 +26,36 @@ namespace Harjoitustyö
         //location
         public double LocationX { get; set; }
         public double LocationY { get; set; }
-        //Speed values
+        //Speed values             
 
-        
-        
-        
-
-        public void Slow()
-        
-        {
-           //front slowing
-            speed = speed - 0.5;
-                if (speed <= 0) speed = 0;
-                    LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90)))*speed;
-                    LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90)))*speed;
-            //backward slowing
-            speed1 = speed1 - 0.5;
-            if (speed1 <= 0) speed1 = 0;
-            LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
-            LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
-
-
-        }
-
-
-
-
-
-
-
-
-        private readonly double MaxSpeed = 15.0;
-        private readonly double MaxSpeed1 = 7.5;
+        public double MaxSpeed { get; set; }
+        public double MaxSpeed1 { get; set; }
         private readonly double Accelarate = 2.0;
        // public double Break { get; set; }
         private readonly double Break = 1.5;
 
-        private double speed;
-        private double speed1;
-
+        public double speed;
+        public double speed1;
+       
         // Cars angle
         private double Angle = 0;
         private readonly double AngleTier = 5;
+
+        public double CanvasWidth;
+        public double CanvasHeight;
+        public double CanvasWidthMap;
+        public double CanvasHeightMap;
+
+
         public Car1()
         {
             this.InitializeComponent();
 
+
+           
+            //maxspeed value
+            MaxSpeed = 10;
+            MaxSpeed1 = 5;
             //starts the animation ?
             timer = new DispatcherTimer();
             timer.Tick += Timer_Car;
@@ -97,6 +81,7 @@ namespace Harjoitustyö
 
         public void Rotate(int direction)
 
+                //car rotation angle
         {
             if (speed > 1)
             {
@@ -110,6 +95,8 @@ namespace Harjoitustyö
             }
         }
 
+       
+
         //forward movement
         public void Drive()
         {
@@ -118,21 +105,40 @@ namespace Harjoitustyö
             if (speed > MaxSpeed) speed = MaxSpeed;
             LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed;
             LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed;
-
-           
-
+       
         }
 
 
 
         // backwards
-       public void Drive1()
+        public void Drive1()
         {
             speed1 += Break;
             if (speed1 > MaxSpeed1) speed1 = MaxSpeed1;
             LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
             LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
 
+
+
         }
+            // car slow downs when you don't push buttons
+        public void Slow()
+
+        {
+
+            speed = speed - 0.5;
+            if (speed <= 0) speed = 0;
+            LocationX -= (Math.Cos(Math.PI / 180 * (Angle + 90))) * speed;
+            LocationY -= (Math.Sin(Math.PI / 180 * (Angle + 90))) * speed;
+
+            speed1 = speed1 - 0.5;
+            if (speed1 <= 0) speed1 = 0;
+            LocationX -= (Math.Cos(Math.PI / 180 * (Angle - 90))) * speed1;
+            LocationY -= (Math.Sin(Math.PI / 180 * (Angle - 90))) * speed1;
+        }
+
+      
+
     }
+
 }
