@@ -95,13 +95,18 @@ namespace Harjoitustyö
 
         public void Rotate(int direction)
 
+                //car rotation angle
         {
             if (speed > 1)
             {
                 Angle += direction * AngleTier;
                 Car_1_Angle.Angle = Angle;
             }
-
+            if (speed1 > 1)
+            {
+                Angle += direction * AngleTier;
+                Car_1_Angle.Angle = Angle;
+            }
         }
 
        
