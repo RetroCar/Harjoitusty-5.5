@@ -6,13 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignHeight="200"
+    d:DesignWidth="300">
 
-    <Grid>
+    <Grid >
 
 
-        <Image Source="Assets/Sand.png" Width="1005" Height="480" Margin="128,126,-738,-306" Stretch="Fill"/>
+
+
+        <Image Source="Assets/Sand.png" Width="1008" Height="480" Margin="128,126,-838,-406" Stretch="Fill"/>
 
 
     </Grid>

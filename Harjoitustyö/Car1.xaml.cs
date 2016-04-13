@@ -30,8 +30,7 @@ namespace Harjoitustyö
 
         
         
-        
-
+      
         public void Slow()
         
         {
@@ -55,7 +54,7 @@ namespace Harjoitustyö
 
 
 
-        private readonly double MaxSpeed = 15.0;
+        public double MaxSpeed { get; set; }
         private readonly double MaxSpeed1 = 7.5;
         private readonly double Accelarate = 2.0;
        // public double Break { get; set; }
@@ -63,7 +62,7 @@ namespace Harjoitustyö
 
         public double speed;
         private double speed1;
-
+       
         // Cars angle
         private double Angle = 0;
         private readonly double AngleTier = 5;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -66,10 +67,10 @@ namespace Harjoitustyö
             CanvasHeightMap = Track.Height;
 
             //add map
-            asfalt = new Asfalt { LocationX = CanvasHeightMap, LocationY = CanvasHeightMap };
+            asfalt = new Asfalt { LocationX = CanvasWidthMap, LocationY = CanvasHeightMap };
             Track.Children.Add(asfalt);
 
-            sand = new Sand { LocationX = CanvasHeightMap, LocationY = CanvasHeightMap };
+            sand = new Sand { LocationX = CanvasWidthMap, LocationY = CanvasHeightMap };
             Track.Children.Add(sand);
 
             //add first car
@@ -112,17 +113,17 @@ namespace Harjoitustyö
             //get rect from sand
 
             Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
-            Rect obstacle = new Rect(sand.LocationX, sand.LocationY, sand.ActualWidth, sand.ActualHeight);
-
+            Rect obstacle = new Rect(128,135,976,466);
+            Debug.WriteLine(obstacle);
             car.Intersect(obstacle);
 
             if (!car.IsEmpty) 
             {
-                car1.MaxSpeed = 5;
+                car1.MaxSpeed = 2;
             }
             else
             {
-                car1.MaxSpeed = 15;
+                car1.MaxSpeed = 10;
             }
         }
 
