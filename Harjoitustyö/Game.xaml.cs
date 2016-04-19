@@ -142,7 +142,7 @@ namespace Harjoitustyö
 
             car1.Updateposition();
         }
-
+        // checks when car passes finishline and starts timer
         public void FinishLineCollision()
         {
             Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
