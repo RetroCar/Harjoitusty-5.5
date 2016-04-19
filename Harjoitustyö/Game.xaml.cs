@@ -30,6 +30,9 @@ namespace Harjoitustyö
         //enviroment
         private Asfalt asfalt;
         private Sand sand;
+        private UserControl finishLine;
+
+
 
         // Canvas Width and Height 
         public double CanvasWidth;
@@ -73,6 +76,8 @@ namespace Harjoitustyö
             //add map
             asfalt = new Asfalt { LocationX = CanvasWidthMap, LocationY = CanvasHeightMap };
             Track.Children.Add(asfalt);
+          
+
 
             sand = new Sand { LocationX = CanvasWidthMap, LocationY = CanvasHeightMap };
             Track.Children.Add(sand);
@@ -82,6 +87,8 @@ namespace Harjoitustyö
             car1 = new Car1 { LocationX = CanvasWidth / 4, LocationY = CanvasHeight / 4 };
             Track.Children.Add(car1);
             car1.Updateposition();
+
+            finishLine = asfalt.Time;
 
 
             // key listeners
@@ -95,7 +102,7 @@ namespace Harjoitustyö
             game.Start();
 
             // Timer to the game
-            stopwatch.Start();
+            //stopwatch.Start();
             // Audio to the game
             InitAudio();
 
@@ -114,7 +121,7 @@ namespace Harjoitustyö
             racemusa.SetSource(stream, file.ContentType);
             //racemusa.Position = TimeSpan.Zero;
             //racemusa.Play();
-            
+
         }
 
         private void Game_Timer(object sender, object e)
@@ -129,10 +136,23 @@ namespace Harjoitustyö
             car1.Slow();
 
             SandCollision();
+            FinishLineCollision();
             // Timer running to textbox
             timerLog.Text = stopwatch.ElapsedMilliseconds.ToString();
 
             car1.Updateposition();
+        }
+
+        public void FinishLineCollision()
+        {
+            Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
+            var x = this.finishLine.Margin;
+            var finishLineRectangle = new Rect(x.Left, x.Top, this.finishLine.Width, this.finishLine.Height);
+            car.Intersect(finishLineRectangle);
+            if (!car.IsEmpty)
+            {
+                this.stopwatch.Start();
+            }
         }
 
 
