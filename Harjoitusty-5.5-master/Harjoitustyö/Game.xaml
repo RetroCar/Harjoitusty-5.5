@@ -14,13 +14,16 @@
             x:Name="Track"
                 Width="1280"
                 Height="720"
-                HorizontalAlignment="Center"/>
+                HorizontalAlignment="Center">
+           
+
+        </Canvas>
 
 
 
 
         <Button x:Name="button" Content="Mainmenu" Canvas.Left="678" Canvas.Top="27" Click="button_Click_1" Margin="803,1,0,687"/>
-
+        <TextBox x:Name="timerLog" HorizontalAlignment="Left" Margin="1173,9,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" RenderTransformOrigin="0.515,0.489" TextChanged="timerLog_TextChanged"/>
 
     </Grid>
 </Page>

@@ -40,5 +40,9 @@ namespace Harjoitustyö
             this.Frame.Navigate(typeof(Creators));
         }
 
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
+        }
     }
 }
