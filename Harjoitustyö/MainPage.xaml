@@ -24,8 +24,8 @@
 
         <Button x:Name="PlayButton" Content="Start" Margin="5" Width="200" Click="PlayButton_Click"/>
         <Button x:Name="CreditsButton" Content="Creators" Margin="5" Width="200" Click="CreditsButton_Click"/>
-
-    </StackPanel>
+        <Button x:Name="ExitButton" Content="Exit Game" Margin="5" VerticalAlignment="Top" Width="200" Click="ExitButton_Click"/>
+        </StackPanel>
 
     </Grid>
 

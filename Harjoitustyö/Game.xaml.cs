@@ -23,14 +23,15 @@ namespace Harjoitustyö
 {
     public sealed partial class Game : Page
     {
-
+        private Windows.Storage.StorageFile sampleFile;
         // First car
         private Car1 car1;
-
+       
         //enviroment
         private Asfalt asfalt;
         private Sand sand;
         private UserControl finishLine;
+        //private UserControl wallCollision;
 
 
 
@@ -64,10 +65,11 @@ namespace Harjoitustyö
                = ApplicationViewWindowingMode.PreferredLaunchViewSize;
             ApplicationView.PreferredLaunchViewSize = new Size(1280, 720);
 
-            //get my own canvas size
+            // New stopwatch created
 
             stopwatch = new Stopwatch();
 
+            // get owen canvas sizes
             CanvasWidth = Track.Width;
             CanvasHeight = Track.Height;
             CanvasWidthMap = Track.Width;
@@ -78,7 +80,7 @@ namespace Harjoitustyö
             Track.Children.Add(asfalt);
           
 
-
+            // add sand usercontrol
             sand = new Sand { LocationX = CanvasWidthMap, LocationY = CanvasHeightMap };
             Track.Children.Add(sand);
 
@@ -88,12 +90,19 @@ namespace Harjoitustyö
             Track.Children.Add(car1);
             car1.Updateposition();
 
+            //Finishline UsewrControl
             finishLine = asfalt.Time;
-
+           // wallCollision = asfalt.Wall;
 
             // key listeners
             Window.Current.CoreWindow.KeyDown += CoreWindow_KeyDown;
             Window.Current.CoreWindow.KeyUp += CoreWindow_KeyUp;
+
+            Highscore();
+
+            ReadFile();
+
+
 
             // Game fps
             game = new DispatcherTimer();
@@ -124,12 +133,26 @@ namespace Harjoitustyö
 
         }
 
+        private async void Highscore()
+        {
+
+            Windows.Storage.StorageFolder highScore = Windows.Storage.ApplicationData.Current.LocalFolder;
+            sampleFile = 
+                await highScore.CreateFileAsync("HighScore.txt", Windows.Storage.CreationCollisionOption.OpenIfExists);
+
+        }
+        private async void ReadFile()
+        {
+            timerLog.Text =
+                await Windows.Storage.FileIO.ReadTextAsync(sampleFile);
+        }
+
         private void Game_Timer(object sender, object e)
         {
             //move
 
-            if (Up) car1.Drive();
-            if (Down) car1.Drive1();
+            if (Up) car1.Drive(1);
+            if (Down) car1.Drive(-1);
             //spinning
             if (Left) car1.Rotate(-3);
             if (Right) car1.Rotate(3);
@@ -142,6 +165,27 @@ namespace Harjoitustyö
 
             car1.Updateposition();
         }
+
+       /*   public void WallCollision()
+        {
+            Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
+            var x = this.wallCollision.Margin;
+            var wallCollisionRectangle = new Rect(x.Left, x.Top, this.wallCollision.Width, this.wallCollision.Height);
+            if (!car.IsEmpty)
+            {
+                car1.MaxSpeed = 0;
+                car1.MinSpeed = 0;
+            }
+            else
+            {
+                car1.MaxSpeed = 10;
+                car1.MaxSpeed = -5;
+            }
+
+                    
+            }
+        */
+        
         // checks when car passes finishline and starts timer
         public void FinishLineCollision()
         {
@@ -151,7 +195,9 @@ namespace Harjoitustyö
             car.Intersect(finishLineRectangle);
             if (!car.IsEmpty)
             {
-                this.stopwatch.Start();
+                this.stopwatch.Restart();
+                
+
             }
         }
 
@@ -168,12 +214,12 @@ namespace Harjoitustyö
             if (!car.IsEmpty)
             {
                 car1.MaxSpeed = 2;
-                car1.MaxSpeed1 = 1.5;
+                car1.MinSpeed = -1.5;
             }
             else
             {
                 car1.MaxSpeed = 10;
-                car1.MaxSpeed1 = 5;
+                car1.MinSpeed = -5;
             }
         }
 
