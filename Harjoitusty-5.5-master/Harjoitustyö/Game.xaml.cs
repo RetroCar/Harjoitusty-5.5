@@ -23,14 +23,14 @@ namespace Harjoitustyö
 {
     public sealed partial class Game : Page
     {
-        private Windows.Storage.StorageFile sampleFile;
+      
         // First car
         private Car1 car1;
 
         //enviroment
         private Asfalt asfalt;
         private Sand sand;
-        private Line startLine;
+        
         private UserControl finishLine;
         //private UserControl wallCollision;
 
@@ -144,6 +144,7 @@ namespace Harjoitustyö
             if (Right) car1.Rotate(3);
             car1.Slow();
 
+           // WallCollision();
             SandCollision();
             FinishLineCollision();
             // Timer running to textbox
@@ -154,23 +155,28 @@ namespace Harjoitustyö
 
         /*   public void WallCollision()
          {
-             Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
-             var x = this.wallCollision.Margin;
-             var wallCollisionRectangle = new Rect(x.Left, x.Top, this.wallCollision.Width, this.wallCollision.Height);
-             if (!car.IsEmpty)
-             {
-                 car1.MaxSpeed = 0;
-                 car1.MinSpeed = 0;
-             }
-             else
-             {
-                 car1.MaxSpeed = 10;
-                 car1.MaxSpeed = -5;
-             }
+            Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
+            Rect wall = new Rect(200, 387, 120, 766);
+
+            car.Intersect(wall);
+
+            if (car.IsEmpty)
+            {
+                car1.MaxSpeed = 0;
+                car1.MinSpeed = 0;
+            }
+            else
+            {
+                car1.MaxSpeed = 10;
+                car1.MinSpeed = -5;
+            }
+        }
+        */
 
 
-             }
-         */
+
+    
+         
 
         // checks when car passes finishline and starts timer
         public void FinishLineCollision()
@@ -193,14 +199,7 @@ namespace Harjoitustyö
         // string[] lines = { "First line", "Second line", "Third line" };
         // System.IO.File.WriteAllLines(@"D:\K3295\Harjoitusty-5.5\Harjoitusty-5.5-master\Harjoitustyö\HighScore", lines);
 
-
-          
-
-
-
-
-
-
+       
 
         public void SandCollision()
         {
@@ -222,14 +221,6 @@ namespace Harjoitustyö
                 car1.MinSpeed = -5;
             }
         }
-
-
-
-
-
-
-
-
 
 
 

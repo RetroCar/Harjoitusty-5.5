@@ -42,7 +42,7 @@
 
         </Rectangle>
         <UserControl  x:FieldModifier="public"  x:Name="Time" HorizontalAlignment="Left" Height="108" Margin="640,10,0,0" VerticalAlignment="Top" Width="42"/>
-        <UserControl  x:FieldModifier="public"  x:Name="Wall" HorizontalAlignment="Left" Height="108" Margin="640,10,0,0" VerticalAlignment="Top" Width="42"/>
+        
 
 
     </Grid>
