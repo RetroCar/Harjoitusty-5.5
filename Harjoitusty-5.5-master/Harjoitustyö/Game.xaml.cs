@@ -26,14 +26,13 @@ namespace Harjoitustyö
         private Windows.Storage.StorageFile sampleFile;
         // First car
         private Car1 car1;
-       
+
         //enviroment
         private Asfalt asfalt;
         private Sand sand;
+        private Line startLine;
         private UserControl finishLine;
         //private UserControl wallCollision;
-
-
 
         // Canvas Width and Height 
         public double CanvasWidth;
@@ -111,10 +110,12 @@ namespace Harjoitustyö
             game.Start();
 
             // Timer to the game
-            //stopwatch.Start();
+            //  stopwatch.Start();
             // Audio to the game
             InitAudio();
 
+            //startLine = new Line();
+            //Track.Children.Add(startLine);
 
         }
 
@@ -199,7 +200,32 @@ namespace Harjoitustyö
                 
 
             }
+
+
+        // this.stopwatch.ToString();
+        // string foldername = @"D:\K3295\Harjoitusty-5.5\Harjoitusty-5.5-master\Harjoitustyö\HighScore";
+        // string[] lines = { "First line", "Second line", "Third line" };
+        // System.IO.File.WriteAllLines(@"D:\K3295\Harjoitusty-5.5\Harjoitusty-5.5-master\Harjoitustyö\HighScore", lines);
+
+        private async void HighScore()
+        {
+            Windows.Storage.StorageFolder highScore = Windows.Storage.ApplicationData.Current.LocalFolder;
+            sampleFile = await highScore.CreateFileAsync("HighScore.txt", Windows.Storage.CreationCollisionOption.OpenIfExists);
         }
+
+
+
+        private async void Readfile()
+        {
+           
+            timerLog.Text = await Windows.Storage.FileIO.ReadTextAsync(sampleFile);
+            Debug.WriteLine(timerLog);
+        }
+
+
+
+
+
 
 
         public void SandCollision()
@@ -208,7 +234,7 @@ namespace Harjoitustyö
 
             Rect car = new Rect(car1.LocationX, car1.LocationY, car1.ActualWidth, car1.ActualHeight);
             Rect obstacle = new Rect(128, 135, 976, 466);
-            Debug.WriteLine(obstacle);
+
             car.Intersect(obstacle);
 
             if (!car.IsEmpty)
@@ -222,6 +248,9 @@ namespace Harjoitustyö
                 car1.MinSpeed = -5;
             }
         }
+
+
+
 
 
 
@@ -282,16 +311,7 @@ namespace Harjoitustyö
             }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame == null) return;
 
-            if (rootFrame.CanGoBack)
-            {
-                rootFrame.GoBack();
-            }
-        }
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -301,6 +321,8 @@ namespace Harjoitustyö
             if (rootFrame.CanGoBack)
             {
                 rootFrame.GoBack();
+                racemusa.IsLooping = false;
+                racemusa.Stop();
             }
         }
              private void timerLog_TextChanged(object sender, TextChangedEventArgs e)

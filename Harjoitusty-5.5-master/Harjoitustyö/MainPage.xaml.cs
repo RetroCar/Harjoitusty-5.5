@@ -38,7 +38,7 @@ namespace Harjoitustyö
         {
             //Add navigate to game
             this.Frame.Navigate(typeof(Creators));
-        }   
+        }
         // Exit Game
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
